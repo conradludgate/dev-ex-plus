@@ -28,7 +28,7 @@ function render() {
     ReactDOM.render(
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <React.Suspense fallback="foo">
-                <MemoryRouter>
+                <MemoryRouter initialEntries={[`/${plugins[0].id}`]}>
                     <Routes>
                         <Route path="/" element={<Index />}>
                             {plugins.map(plugin => {
