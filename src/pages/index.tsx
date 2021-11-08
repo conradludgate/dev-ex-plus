@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -14,7 +13,6 @@ import {
     Link as RouterLink,
     Outlet,
     useMatch,
-    useLocation,
 } from 'react-router-dom';
 import { plugins } from "../app";
 
