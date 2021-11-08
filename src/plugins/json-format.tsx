@@ -6,7 +6,7 @@ import  {JSONPath} from 'jsonpath-plus';
 
 export default function JSONFormat(): ReactElement {
     const [code, setCode] = useState("");
-    const [jpath, setJPath] = useState("$");
+    const [jpath, setJPath] = useState("");
     const [obj, setObj] = useState({});
     const [format, setFormat] = useState("");
     const [error, setError] = useState("");
@@ -19,12 +19,12 @@ export default function JSONFormat(): ReactElement {
         } catch (err) {
             setError(err.message);
         }
-    }, [code, jpath]);
+    }, [code]);
 
     useEffect(() => {
         const ext = jpath ? JSONPath({json: obj, path: jpath}) : obj;
         setFormat(JSON.stringify(ext, null, 2));
-    }, [code, jpath]);
+    }, [obj, jpath]);
 
     return <Box sx={{ height: 0.98 }} >
         <Grid container sx={{ height: 0.95 }} spacing={4}>
@@ -61,8 +61,13 @@ export default function JSONFormat(): ReactElement {
             </Grid>
         </Grid>
         <TextField
+            sx={{ marginTop: 2 }}
+            variant="filled"
+            size="small"
+            label="jsonpath"
             value={jpath}
             onChange={e => setJPath(e.target.value)}
+            fullWidth
         />
     </Box>
 }

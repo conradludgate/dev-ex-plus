@@ -13,18 +13,22 @@ import Drawer from "@mui/material/Drawer";
 import {
     Link as RouterLink,
     Outlet,
+    useMatch,
+    useLocation,
 } from 'react-router-dom';
 import { plugins } from "../app";
 
 const drawerWidth = 400;
 
 export default function Index(): ReactElement {
+    const { params } = useMatch("/:id");
+
     return <Box sx={{ height: 1, display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Toolbar>
                 <Typography variant="h6" noWrap component="div">
-                    Clipped drawer
+                    DevEx+
                 </Typography>
             </Toolbar>
         </AppBar>
@@ -40,14 +44,12 @@ export default function Index(): ReactElement {
             <Toolbar />
             <List>
                 {Object.entries(plugins).map(([key, plugin]) => {
-                    return <ListItem key={key}>
-                        <ListItemButton component={RouterLink} to={key}>
-                            <ListItemIcon>
-                                {plugin.icon}
-                            </ListItemIcon>
-                            <ListItemText primary={plugin.name} />
-                        </ListItemButton>
-                    </ListItem>
+                    return <ListItemButton key={key} component={RouterLink} to={key} selected={params.id === key}>
+                        <ListItemIcon>
+                            {plugin.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={plugin.name} />
+                    </ListItemButton>
                 })}
             </List>
         </Drawer>
