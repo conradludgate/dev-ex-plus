@@ -19,7 +19,7 @@ import { plugins } from "../app";
 const drawerWidth = 400;
 
 export default function Index(): ReactElement {
-    return <Box sx={{ display: 'flex' }}>
+    return <Box sx={{ height: 1, display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
             <Toolbar>
@@ -39,9 +39,9 @@ export default function Index(): ReactElement {
         >
             <Toolbar />
             <List>
-                {plugins.map((plugin) => {
-                    return <ListItem key={plugin.id}>
-                        <ListItemButton component={RouterLink} to={plugin.id}>
+                {Object.entries(plugins).map(([key, plugin]) => {
+                    return <ListItem key={key}>
+                        <ListItemButton component={RouterLink} to={key}>
                             <ListItemIcon>
                                 {plugin.icon}
                             </ListItemIcon>
@@ -51,7 +51,7 @@ export default function Index(): ReactElement {
                 })}
             </List>
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ height: 1, flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Outlet />
         </Box>
