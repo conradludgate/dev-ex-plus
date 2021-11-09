@@ -6,6 +6,8 @@ This is a developer utility tool which aspires to be a local or web application 
 - [X] JSON Formatting and JSONPath extraction
 - [ ] Base64 encoding/decoding
 - [ ] Regex tester
+- [ ] Markdown preview
+- [ ] Color picker (RGB, HSL, etc), conversions from hex to dec
 - [ ] Plugin support
 
 ## Plugins

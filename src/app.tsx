@@ -7,9 +7,6 @@ import UnixTimeIcon from "@mui/icons-material/AccessTime";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
-import UnixTime from "./plugins/unix-time";
-import JSONFormat from "./plugins/json-format";
-
 interface Plugin {
     name: string;
     icon: React.ReactNode;
@@ -20,12 +17,12 @@ export const plugins: Record<string, Plugin> = {
     "unix-time": {
         name: "Unix Time Converter",
         icon: <UnixTimeIcon />,
-        content: async () => ({ default: UnixTime })
+        content: () => import("./plugins/unix-time"),
     },
     "json-format": {
         name: "JSON Format/Validate",
         icon: null,
-        content: async () => ({ default: JSONFormat })
+        content: () => import("./plugins/json-format"),
     }
 }
 
